@@ -1,4 +1,4 @@
-# TIY-9-1-Blog API
+# TIY-9-3-Chart JS app
 
 
-The Iron Yard week 9, day 1 assignment. The goal of this assignment was to create a simple API endpoint for creating a blog post, getting all blog posts and adding a comment to a blog post.
+The Iron Yard week 9, day 3 assignment. The goal of this assignment was to create a dynamic chart or graph which gets data from an API..

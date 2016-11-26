@@ -1,0 +1,22 @@
+{
+  "name": "tiy_9_3_chart_app",
+  "version": "1.0.0",
+  "description": "Chart JS app",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johncpatterson/TIY-9-3-Chart-js-App.git"
+  },
+  "keywords": [
+    "chartjs"
+  ],
+  "author": "John Patterson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johncpatterson/TIY-9-3-Chart-js-App/issues"
+  },
+  "homepage": "https://github.com/johncpatterson/TIY-9-3-Chart-js-App#readme"
+}

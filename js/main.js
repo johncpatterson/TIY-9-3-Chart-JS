@@ -16,37 +16,47 @@ jQuery(function() {
 
    })
 
-   function drawChart() {
-      // Function for getting clearing the HTML, pulling data from the API 
-      function getData(query) {
-         // Get data from the API
-         $.ajax({
-            url: `http://nflarrest.com/api/v1/team/topCrimes/${query}`,
-            method: 'GET',
-            success: function successHandler(Data) {
-               console.log(Data);
-               var labels = [];
-               var data = [];
+   function getData(query) {
+      // Get data from the API
+      $.ajax({
+         url: `http://nflarrest.com/api/v1/team/search/?term=${query}`,
+         method: 'GET',
+         success: function successHandler(returnedTeam) {
+            console.log(returnedTeam);
+            var teamToSearch = returnedTeam[0].team_code;
+            console.log(teamToSearch);
+         },
+      });
+      return teamToSearch;
 
-               // Loop through data array 
-               Data.forEach(function(Data) {
-                  labels.push(Data.Category);
-                  data.push(Data.arrest_count);
-               })
-            },
-         });
-      }
+      $.ajax({
+         url: `http://nflarrest.com/api/v1/team/topCrimes/${teamToSearch}`,
+         method: 'GET',
+         success: function successHandler(Data) {
+            // console.log(Data);
+            var labels = [];
+            var data = [];
 
+            // Loop through data array 
+            Data.forEach(function(Data) {
+               labels.push(Data.Category);
+               data.push(Data.arrest_count);
+            })
+            drawChart(labels, data);
+         },
+      });
+   }
+
+   function drawChart(labels, data) {
 
       var ctx = document.getElementById("myChart").getContext("2d");
 
-
       var myChart = new Chart(ctx, {
-         type: 'bar',
+         type: 'pie',
          data: {
             labels: labels,
             datasets: [{
-               label: '# of Votes',
+               label: '# of Arrests',
                data: data,
                backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',
@@ -64,7 +74,7 @@ jQuery(function() {
                   'rgba(153, 102, 255, 1)',
                   'rgba(255, 159, 64, 1)'
                ],
-               borderWidth: 1
+               borderWidth: 2
             }]
          },
          options: {
@@ -78,6 +88,5 @@ jQuery(function() {
          }
       });
    }
-   drawChart();
 
 });

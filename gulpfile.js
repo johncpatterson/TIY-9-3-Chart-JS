@@ -8,7 +8,7 @@ const plumber = require('gulp-plumber');
 
 // const babel = require('gulp-babel');
 // const eslint = require('gulp-eslint');
-// const notify = require("gulp-notify");
+
 
 // gulp.task('lint', () => {
 //     return gulp.src(['js/*.js', '!node_modules/**'])
@@ -51,6 +51,6 @@ gulp.task('browserSync', function() {
 // gulp.src("./src/test.ext")
 //   .pipe(notify("Hello Gulp!"));
 
-gulp.task('watch', ['browserSync', 'sass', 'notify'], function() {
+gulp.task('watch', ['browserSync', 'sass'], function() {
    gulp.watch(['*.html', './js/*.js', './sass/*.scss'], ['sass']);
 });

@@ -18,5 +18,11 @@
   "bugs": {
     "url": "https://github.com/johncpatterson/TIY-9-3-Chart-js-App/issues"
   },
-  "homepage": "https://github.com/johncpatterson/TIY-9-3-Chart-js-App#readme"
+  "homepage": "https://github.com/johncpatterson/TIY-9-3-Chart-js-App#readme",
+  "dependencies": {
+    "browser-sync": "^2.18.2",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sass": "^2.3.2"
+  }
 }

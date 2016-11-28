@@ -18,7 +18,7 @@ jQuery(function() {
 
    // Bring in team data for the Bengals ON PAGE LOAD
    $.ajax({
-      url: `http://nflarrest.com/api/v1/team/topCrimes/cin?limit=5`,
+      url: `http://nflarrest.com/api/v1/team/topCrimes/cin?limit=6`,
       method: 'GET',
       success: function successHandler(Data) {
          console.log(Data);
@@ -40,7 +40,7 @@ jQuery(function() {
       var ctx = document.getElementById("myChart").getContext("2d");
 
       var myChart = new Chart(ctx, {
-         type: 'bar',
+         type: 'pie',
          data: {
             labels: labels,
             datasets: [{

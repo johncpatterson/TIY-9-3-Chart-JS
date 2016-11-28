@@ -1,56 +1,27 @@
 'use strict';
+ 
+var gulp = require('gulp');
+var sass = require('gulp-sass');
+var browserSync = require('browser-sync').create();
 
-const gulp = require('gulp');
-const sass = require('gulp-sass');
-const browserSync = require('browser-sync').create();
-const notify = require("gulp-notify");
-const plumber = require('gulp-plumber');
+gulp.task('sass', function () {
+  return gulp.src('./sass/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('./css'))
+    .pipe(browserSync.reload({
+      stream: true
+    })
+    )});
 
-// const babel = require('gulp-babel');
-// const eslint = require('gulp-eslint');
-
-
-// gulp.task('lint', () => {
-//     return gulp.src(['js/*.js', '!node_modules/**'])
-//         .pipe(eslint())
-//         .pipe(eslint.format())
-//         .pipe(eslint.failAfterError())
-//         .on("error", notify.onError('Error!'));
-// });
-
-// gulp.task('babel', () => {
-//     return gulp.src('js/*.js')
-//         .pipe(babel({
-//             presets: ['es2015']
-//         }))
-//         .pipe(gulp.dest('dist'));
-// });
-
-gulp.task('sass', function() {
-   return gulp.src('./sass/*.scss')
-      .pipe(sass().on('error', function() {
-         notify("You have a Sass error").write('');
-      }))
-      .pipe(plumber({
-         errorHandler: notify.onError('Error: <%= error.message %>')
-      }))
-      .pipe(gulp.dest('./css'))
-      .pipe(browserSync.reload({
-         stream: true
-      }))
-});
 
 gulp.task('browserSync', function() {
-   browserSync.init({
-      server: {
-         baseDir: ''
-      },
-   })
+  browserSync.init({
+    server: {
+      baseDir: ''
+    },
+  })
 })
-
-// gulp.src("./src/test.ext")
-//   .pipe(notify("Hello Gulp!"));
-
-gulp.task('watch', ['browserSync', 'sass'], function() {
-   gulp.watch(['*.html', './js/*.js', './sass/*.scss'], ['sass']);
+ 
+gulp.task('watch',['browserSync','sass'], function () {
+  gulp.watch(['./sass/*.scss','./*.html','./js/*.js'], ['sass']);
 });

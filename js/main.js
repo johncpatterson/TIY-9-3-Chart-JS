@@ -4,14 +4,14 @@ jQuery(function() {
    $("#submitForm").on("submit", function() {
          event.preventDefault();
          var city = $("#searchBox").val();
-         getData(city);
+         getTeam(city);
          $("#searchBox").val('');
 
       })
       // Even handler for clicking the button and getting the value of the text input
    $("#button").on("click", function() {
       var city = $("#searchBox").val();
-      getData(city);
+      getTeam(city);
       $("#searchBox").val('');
 
    })
@@ -82,11 +82,12 @@ jQuery(function() {
          url: `http://nflarrest.com/api/v1/team/search/?term=${query}`,
          method: 'GET',
          success: function successHandler(returnedTeam) {
-            $("#teanmGoesHere").text(returnedTeam.teams_full_name);
+            $("#teamCityGoesHere").text(returnedTeam[0].city);
+            $("#teamNameGoesHere").text(returnedTeam[0].teams_full_name);
             var teamToSearch = returnedTeam[0].team_code;
             console.log(teamToSearch);
-            return teamToSearch;
-         }, 
+            getData(teamToSearch);
+         },
       });
    }
    // Use team name returned from getTeam to get arrest data for team from API

@@ -10,11 +10,9 @@ input {
 
 .team-info {
   text-align: center;
-  font-size: 30px;
-  margin: 30px 0;
-  font-family: 'Bree Serif', serif; }
+  font-size: 40px;
+  margin: 30px 0; }
 
 footer {
   text-align: center;
-  margin: 40px 0;
-  font-family: 'Bree Serif', serif; }
+  margin: 40px 0; }

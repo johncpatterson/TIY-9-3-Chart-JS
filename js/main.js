@@ -115,7 +115,7 @@ jQuery(function() {
       var ctx = document.getElementById("myChart").getContext("2d");
 
       var myChart = new Chart(ctx, {
-         type: 'pie',
+         type: 'bar',
          data: {
             labels: labels,
             datasets: [{
